@@ -1,6 +1,13 @@
 import { useState, useCallback } from 'react';
 import axios from 'axios';
-import { GraphData, GraphFilters, GraphApiResponse } from '../types';
+import {
+  GraphData,
+  GraphFilters,
+  GraphApiResponse,
+  CytoscapeNode,
+  CytoscapeEdge,
+  RelationType,
+} from '../types';
 
 const API_BASE_URL =
   process.env.REACT_APP_API_URL || 'http://localhost:4000/api/v1';
@@ -28,7 +35,29 @@ export const useGraphData = () => {
         { params }
       );
 
-      setGraphData(response.data);
+      // Transform API response to Cytoscape.js format
+      const transformedData: GraphData = {
+        nodes: response.data.nodes.map((node) => ({
+          data: {
+            id: node.data.id,
+            name: node.data.name,
+            type: node.data.type as 'institution' | 'person',
+            institution_level: node.data.institution_level as any,
+            description: node.data.description,
+          },
+        })),
+        edges: response.data.edges.map((edge) => ({
+          data: {
+            id: edge.data.id,
+            source: edge.data.source,
+            target: edge.data.target,
+            type: edge.data.type as RelationType,
+            description: edge.data.description,
+          },
+        })),
+      };
+
+      setGraphData(transformedData);
     } catch (err: any) {
       console.error('Error fetching graph data:', err);
       setError(err.message || 'Failed to fetch graph data');

@@ -103,8 +103,8 @@ The system is composed of independent services:
 
 ## Tech stack
 
-- React
-- Cytoscape.js
+- React (Vite.js) ✅
+- Cytoscape.js ✅
 - Node.js (Fastify) ✅
 - Python (OSINT / scraping)
 - PostgreSQL ✅

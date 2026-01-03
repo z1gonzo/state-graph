@@ -48,9 +48,33 @@ export interface GraphElement {
   };
 }
 
+export interface CytoscapeNodeData {
+  id: string;
+  name: string;
+  type: NodeType;
+  institution_level?: InstitutionLevel;
+  description?: string;
+}
+
+export interface CytoscapeEdgeData {
+  id: string;
+  source: string;
+  target: string;
+  type: RelationType;
+  description?: string;
+}
+
+export interface CytoscapeNode {
+  data: CytoscapeNodeData;
+}
+
+export interface CytoscapeEdge {
+  data: CytoscapeEdgeData;
+}
+
 export interface GraphData {
-  nodes: GraphElement[];
-  edges: GraphElement[];
+  nodes: CytoscapeNode[];
+  edges: CytoscapeEdge[];
 }
 
 // API Response types

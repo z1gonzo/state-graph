@@ -13,7 +13,8 @@ import {
   Card,
   CardContent,
 } from '@mui/material';
-import { InstitutionLevel, RelationType } from '../types';
+import cytoscape from 'cytoscape';
+import { InstitutionLevel, RelationType, LayoutType } from '../types';
 import { useGraphData } from '../hooks/useGraphData';
 import { useGraphLayout } from '../hooks/useGraphLayout';
 import { useGraphInteractions } from '../hooks/useGraphInteractions';
@@ -38,7 +39,7 @@ const GraphView: React.FC = () => {
   // Initialize graph when data is loaded
   useEffect(() => {
     if (graphData && containerRef.current && !cyRef.current) {
-      const cy = (window.cy = cytoscape({
+      const cy = cytoscape({
         container: containerRef.current,
         elements: graphData,
         style: [
@@ -52,7 +53,7 @@ const GraphView: React.FC = () => {
               color: '#fff',
               'font-size': 12,
               'text-wrap': 'wrap',
-              'text-max-width': 150,
+              'text-max-width': '150px',
               width: 40,
               height: 40,
               'border-width': 2,
@@ -185,7 +186,7 @@ const GraphView: React.FC = () => {
           animate: true,
           animationDuration: 1000,
         },
-      }));
+      });
 
       cyRef.current = cy;
 
@@ -231,7 +232,7 @@ const GraphView: React.FC = () => {
     }
   }, [selectedLevel, selectedRelationType, graphData]);
 
-  const handleLayoutChange = (newLayout: string) => {
+  const handleLayoutChange = (newLayout: LayoutType) => {
     setLayout(newLayout);
     if (cyRef.current) {
       applyLayout(newLayout);
@@ -255,7 +256,7 @@ const GraphView: React.FC = () => {
       </Typography>
 
       <Grid container spacing={2} sx={{ mb: 2 }}>
-        <Grid item xs={12} md={3}>
+        <Grid size={{ xs: 12, md: 3 }} component="div">
           <FormControl fullWidth>
             <InputLabel>Institution Level</InputLabel>
             <Select
@@ -276,7 +277,7 @@ const GraphView: React.FC = () => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid size={{ xs: 12, md: 3 }} component="div">
           <FormControl fullWidth>
             <InputLabel>Relation Type</InputLabel>
             <Select
@@ -296,7 +297,7 @@ const GraphView: React.FC = () => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid size={{ xs: 12, md: 3 }} component="div">
           <FormControl fullWidth>
             <InputLabel>Layout</InputLabel>
             <Select
@@ -312,7 +313,7 @@ const GraphView: React.FC = () => {
           </FormControl>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid size={{ xs: 12, md: 3 }} component="div">
           <Box sx={{ display: 'flex', gap: 1 }}>
             <Button variant="outlined" onClick={handleResetView}>
               Reset View
@@ -325,7 +326,7 @@ const GraphView: React.FC = () => {
       </Grid>
 
       <Grid container spacing={2} sx={{ mb: 2 }}>
-        <Grid item xs={12} md={8}>
+        <Grid size={{ xs: 12, md: 8 }} component="div">
           <Paper sx={{ height: '600px', position: 'relative' }}>
             <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
             {loading && (
@@ -369,7 +370,7 @@ const GraphView: React.FC = () => {
           </Paper>
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid size={{ xs: 12, md: 4 }} component="div">
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>

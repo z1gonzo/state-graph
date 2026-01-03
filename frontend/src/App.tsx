@@ -46,19 +46,19 @@ function App() {
     <div>
       <Toolbar />
       <List>
-        <ListItem button component={Link} to="/">
+        <ListItem component={Link} to="/" sx={{ pl: 2 }}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
           <ListItemText primary="Graph View" />
         </ListItem>
-        <ListItem button component={Link} to="/tree">
+        <ListItem component={Link} to="/tree" sx={{ pl: 2 }}>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
           <ListItemText primary="Tree View" />
         </ListItem>
-        <ListItem button component={Link} to="/settings">
+        <ListItem component={Link} to="/settings" sx={{ pl: 2 }}>
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>

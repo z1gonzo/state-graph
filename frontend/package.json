@@ -6,7 +6,6 @@
   "dependencies": {
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-scripts": "5.0.1",
     "cytoscape": "^3.33.1",
     "cytoscape-cose-bilkent": "^4.1.0",
     "cytoscape-dagre": "^2.5.0",
@@ -23,10 +22,10 @@
     "@types/react-dom": "^19.2.3"
   },
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +47,11 @@
   },
   "devDependencies": {
     "@types/cytoscape": "^3.31.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^6.0.0",
+    "@vitejs/plugin-react": "^4.3.2",
+    "@types/node": "^25.0.3",
+    "vitest": "^3.0.0"
   },
   "engines": {
     "node": ">=22.0.0"

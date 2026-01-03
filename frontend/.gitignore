@@ -11,6 +11,9 @@ build/
 out/
 *.tsbuildinfo
 
+# Vite outputs
+.vite/
+
 # Environment variables
 .env
 .env.local
