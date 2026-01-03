@@ -3,7 +3,7 @@
 ## 1. Architecture Diagram (Mermaid)
 
 ```mermaid
-%% Rozszerzony diagram architektury projektu state-graph
+%% Extended architecture diagram for state-graph project
 graph TD
     %% Frontend
     subgraph Frontend
@@ -33,27 +33,27 @@ graph TD
         COL
     end
 
-    %% Przepływy danych
+    %% Data flows
     FE -->|REST / JSON| BE
     BE -->|SQL Read| DB
     COL -->|SQL Write| DB
 
-    %% Future microservices (opcjonalnie)
-    ANALYTICS[Analytics / Reports Microservice] 
+    %% Future microservices (optional)
+    ANALYTICS[Analytics / Reporting Microservice]
     ALERTS[Alerting / Monitoring Microservice]
     BE --> ANALYTICS
     BE --> ALERTS
 
-    %% Style kolorów
+    %% Styling
     classDef frontend fill:#cce5ff,stroke:#3399ff,stroke-width:2px;
     classDef backend fill:#d4edda,stroke:#28a745,stroke-width:2px;
     classDef database fill:#fff3cd,stroke:#ffc107,stroke-width:2px;
     classDef collector fill:#f0d4f7,stroke:#9b59b6,stroke-width:2px;
     classDef microservice fill:#ffd6d6,stroke:#ff4d4d,stroke-width:2px;
 
-    class FE frontend;
-    class BE backend;
-    class DB database;
-    class COL collector;
-    class ANALYTICS,microservice;
-    class ALERTS,microservice;
+    class FE frontend
+    class BE backend
+    class DB database
+    class COL collector
+    class ANALYTICS microservice
+    class ALERTS microservice
