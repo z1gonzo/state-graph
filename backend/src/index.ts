@@ -1,5 +1,7 @@
 import fastify from 'fastify';
+// @ts-ignore
 import cors from 'fastify-cors';
+// @ts-ignore
 import swagger from 'fastify-swagger';
 import { pool } from './config/database';
 
