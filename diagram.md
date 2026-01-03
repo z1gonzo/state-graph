@@ -3,7 +3,7 @@
 ## 1. Architecture Diagram (Mermaid)
 
 ```mermaid
-%% Extended architecture diagram for state-graph project
+%% Extended architecture diagram for state-graph project (dark mode friendly)
 graph TD
     %% Frontend
     subgraph Frontend
@@ -44,12 +44,12 @@ graph TD
     BE --> ANALYTICS
     BE --> ALERTS
 
-    %% Styling
-    classDef frontend fill:#cce5ff,stroke:#3399ff,stroke-width:2px;
-    classDef backend fill:#d4edda,stroke:#28a745,stroke-width:2px;
-    classDef database fill:#fff3cd,stroke:#ffc107,stroke-width:2px;
-    classDef collector fill:#f0d4f7,stroke:#9b59b6,stroke-width:2px;
-    classDef microservice fill:#ffd6d6,stroke:#ff4d4d,stroke-width:2px;
+    %% Styling for dark mode
+    classDef frontend fill:#1e1e2f,stroke:#61dafb,stroke-width:2px,color:#ffffff;
+    classDef backend fill:#1e2f1e,stroke:#28a745,stroke-width:2px,color:#ffffff;
+    classDef database fill:#2f2f1e,stroke:#ffc107,stroke-width:2px,color:#ffffff;
+    classDef collector fill:#2f1e2f,stroke:#9b59b6,stroke-width:2px,color:#ffffff;
+    classDef microservice fill:#3a3a3a,stroke:#ff6b6b,stroke-width:2px,color:#ffffff;
 
     class FE frontend
     class BE backend
