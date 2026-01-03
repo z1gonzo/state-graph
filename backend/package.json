@@ -1,0 +1,39 @@
+{
+  "name": "state-graph-backend",
+  "version": "1.0.0",
+  "description": "Backend API for state-graph project",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "state-graph",
+    "government",
+    "api",
+    "nodejs"
+  ],
+  "author": "state-graph project",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^4.24.3",
+    "fastify-cors": "^7.0.0",
+    "fastify-swagger": "^8.16.0",
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/pg": "^8.10.7",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.8"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
