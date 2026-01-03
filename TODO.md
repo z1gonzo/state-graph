@@ -104,7 +104,7 @@ This document outlines the implementation roadmap for the state-graph project, f
 ## Dependencies & Prerequisites
 
 - Docker for containerization
-- Node.js (v18+) for backend and frontend
+- Node.js (v22+) for backend and frontend
 - Python (v3.10+) for data collector
 - PostgreSQL for database
 - Git for version control
