@@ -60,7 +60,7 @@ graph TD
 ```
 
 
-2. Docker & Services
+## 2. Docker & Services
 
 Frontend – React + Cytoscape.js, desktop-first, graph visualization, filters, zoom
 
@@ -75,9 +75,9 @@ Docker Compose – container orchestration, environment isolation, scalable depl
 Optional future microservices – analytics, alerts, graph exports
 
 
-# Project Roadmap - state-graph
+## 3. Project Roadmap - state-graph
 
-## Phase 1: MVP
+### Phase 1: MVP
 - [ ] Define data model (nodes + relations)
 - [ ] Setup PostgreSQL in Docker
 - [ ] Backend API with `/tree` and `/graph` endpoints
@@ -85,14 +85,14 @@ Optional future microservices – analytics, alerts, graph exports
 - [ ] Data Collector: scrape initial city data
 - [ ] Initial architecture diagram
 
-## Phase 2: Extensions
+### Phase 2: Extensions
 - [ ] Add historical data (terms, institutional changes)
 - [ ] Support PDF documents / asset declarations
 - [ ] Interactive frontend filters (institution type, level, independence)
 - [ ] Integration tests and CI/CD in Docker
 - [ ] Automated updates from government sources
 
-## Phase 3: Scaling & Analytics
+### Phase 3: Scaling & Analytics
 - [ ] Multi-city / multi-voivodeship support
 - [ ] Graph export / JSON API
 - [ ] OSINT analytics and statistics
