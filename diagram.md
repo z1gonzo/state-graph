@@ -57,7 +57,7 @@ graph TD
     class COL collector
     class ANALYTICS microservice
     class ALERTS microservice
-
+```
 
 
 2. Docker & Services
