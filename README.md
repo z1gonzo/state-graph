@@ -1,153 +1,75 @@
 # state-graph
 
-State Graph is a data infrastructure project for modeling,
-aggregating and visualizing the structure of public institutions
-and power relations as a graph.
+`state-graph` is the data and graph infrastructure project for modeling public institutions, officials, and formal relationships as a graph.
 
-The project is designed as a foundation for OSINT analysis,
-data transparency tools and civic watchdog applications.
+It is designed to support OSINT analysis, civic transparency tools, and applications such as `ktozkim.pl`.
 
----
 
-## 🚀 Current Status: Phase 1 & 2 Complete!
+## What belongs in this repo
 
-**✅ Complete Foundation & Frontend Delivered** (January 2026)
+- Generic graph model of institutions and relationships
+- PostgreSQL schema and seed data
+- Backend API for graph/tree/node/relation data
+- Graph visualization UI
+- Future Python ETL / data collector
+- Data provenance and normalization rules
 
-### 🏗️ What's Been Built
+## What does **not** belong here
 
-**Complete Generic Government Structure**
+- User-facing portal auth/report workflows
+- ktozkim-specific UI/business logic
+- Unbounded scraping without rate limits/cache/source tracking
 
-- 200+ government institutions across all levels (National, Voivodeship, County, Municipal, City Council)
-- Full PostgreSQL database schema with nodes and relations
-- Comprehensive seeding script with hierarchical relationships
-- All relationship types: hierarchical, supervisory, membership, appointment, independent
+Those responsibilities belong in `ktozkim` or a future dedicated ingestion/deployment service.
 
-**Production-Ready Backend API**
+## Current focus
 
-- Node.js + Fastify + TypeScript backend
-- 10 complete REST endpoints for nodes, relations, and graph operations
-- Cytoscape.js integration for frontend visualization
-- Hierarchical tree structure endpoint
-- Comprehensive error handling and logging
-- Swagger API documentation at `/docs`
+Foundation and frontend are reported complete. The next planned phase is real data collection and integration:
 
-**Complete React Frontend**
+- Python ETL/data collector
+- first real city/government data sources
+- data normalization pipeline
+- export/API contract for `ktozkim.pl`
 
-- React + TypeScript with Material-UI design system
-- Cytoscape.js integration for interactive graph visualization
-- 3 complete views: Graph View, Tree View, and Settings
-- Advanced filtering and layout options
-- Professional UI/UX with responsive design
-
-**Key Features Delivered:**
-
-- `/api/v1/graph` - Full graph data for Cytoscape.js visualization
-- `/api/v1/tree` - Hierarchical tree structure
-- `/api/v1/nodes` - Complete node management with filtering
-- `/api/v1/relations` - Relationship management
-- Interactive graph visualization with filtering and multiple layouts
-- Professional frontend with settings management and system information
-- Health check and comprehensive API documentation
-
----
-
-## Core idea
-
-Public institutions and officials are modeled as graph nodes.
-Formal relationships such as hierarchy, supervision, appointments
-and independence are modeled as graph edges.
-
-This approach allows:
-
-- visual exploration of state structures
-- detection of hidden dependencies
-- historical analysis of institutional changes
-- reuse of data across multiple frontend applications
-
----
-
-## Architecture
-
-The system is composed of independent services:
-
-### Backend API ✅ COMPLETE
-
-- Node.js + TypeScript
-- Serves structured graph data
-- Optimized for visualization and querying
-- **Status**: Ready for frontend integration
-
-### Data Collector 🚧 NEXT PHASE
-
-- Python-based OSINT and ETL service
-- Aggregates data from public and government sources
-- Parses documents, PDFs and structured records
-- Writes normalized data into PostgreSQL
-
-### Frontend ✅ COMPLETE
-
-- React + TypeScript with Material-UI design system
-- Cytoscape.js for interactive graph visualization
-- 3 complete views: Graph View, Tree View, and Settings
-- Advanced filtering and layout options
-- Professional desktop-first interface for complex data analysis
-
-### Database ✅ COMPLETE
-
-- PostgreSQL
-- Graph modeled using nodes and relations
-- Designed for scalability and historical data
-- **Status**: Generic structure seeded, ready for real data
-
----
+See [`project_state.md`](project_state.md) and [`plan.md`](plan.md).
 
 ## Tech stack
 
-- React (Vite.js) ✅
-- Cytoscape.js ✅
-- Node.js (Fastify) ✅
-- Python (OSINT / scraping)
-- PostgreSQL ✅
-- Docker / Docker Compose
+- Backend: Node.js + Fastify + TypeScript
+- Frontend: React + Vite + TypeScript + Cytoscape.js
+- Database: PostgreSQL
+- Future collector: Python
+- Local infra: Docker Compose
 
----
+## Repository structure
 
-## Project status
+```text
+.
+├── AGENTS.md
+├── README.md
+├── plan.md
+├── project_state.md
+├── changelog.md
+├── docs/
+│   ├── architecture.md
+│   ├── decisions.md
+│   └── status.md
+├── backend/
+├── frontend/
+└── database/
+```
 
-**Phase 1 & 2 Complete** - Foundation, Database & Frontend
+## Quick start
 
-**Current focus:**
-
-- ✅ Generic government structure with 200+ institutions
-- ✅ Complete backend API with 10 endpoints
-- ✅ Database schema and seeding
-- ✅ Complete React frontend with Cytoscape.js visualization
-- 🚧 Data collector for real city data (Phase 3)
-
-**Ready for:**
-
-- Integration with real city government data
-- Data collector implementation for local sources
-- Phase 3: Data Collection and Real Data Integration
-
----
-
-## Quick Start
-
-### Database Setup
+### Database
 
 ```bash
-# Create database
 psql -U postgres -c "CREATE DATABASE state_structure;"
-
-# Run schema
 psql -U postgres -d state_structure -f database/schema.sql
-
-# Seed with generic structure
 psql -U postgres -d state_structure -f database/seed_generic_structure.sql
 ```
 
-### Backend Setup
+### Backend
 
 ```bash
 cd backend
@@ -156,17 +78,31 @@ npm run build
 npm start
 ```
 
-### API Access
+Historical backend URLs:
 
-- Server: http://localhost:4000
-- API Docs: http://localhost:4000/docs
-- Graph Data: http://localhost:4000/api/v1/graph
-- Tree Data: http://localhost:4000/api/v1/tree
+- Server: `http://localhost:4000`
+- API docs: `http://localhost:4000/docs`
+- Graph data: `http://localhost:4000/api/v1/graph`
+- Tree data: `http://localhost:4000/api/v1/tree`
 
----
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Documentation map
+
+- Current state: [`project_state.md`](project_state.md)
+- Plan and backlog: [`plan.md`](plan.md)
+- Architecture: [`docs/architecture.md`](docs/architecture.md)
+- Historical status: [`docs/status.md`](docs/status.md)
+- Technical decisions: [`docs/decisions.md`](docs/decisions.md)
+- Database model: [`database/model.md`](database/model.md)
+- Backend API details: [`backend/README.md`](backend/README.md)
 
 ## Disclaimer
 
-This project focuses on data modeling and aggregation only.
-Interpretation and presentation of the data is the responsibility
-of applications built on top of this system.
+This project focuses on data modeling and aggregation. Interpretation and public presentation of the data is the responsibility of applications built on top of this system, such as `ktozkim.pl`.
